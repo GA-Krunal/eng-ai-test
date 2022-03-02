@@ -1,16 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store from '../redux/store';
 import { BrowserRouter } from 'react-router-dom';
+import Home from '../components/Home';
 
-test('renders app component', () => {
+test('render Home commponent', () => {
   render(
   <Provider store = {store}>
     <BrowserRouter>
-    <App />
+   <Home/>
   </BrowserRouter></Provider>);
-  const placeholder = screen.getByPlaceholderText(/Enter Asteroid ID/);
-  expect(placeholder).toBeInTheDocument();
+  const input = screen.getByTestId("Asteroid ID");
+  expect(input).toBeInTheDocument();
 });
