@@ -11,6 +11,6 @@ test('renders app component', () => {
     <BrowserRouter>
     <App />
   </BrowserRouter></Provider>);
-  const placeholder = screen.getByPlaceholderText(/Enter Asteroid ID/);
-  expect(placeholder).toBeInTheDocument();
+  const txt = screen.getByText(/Landing page is here/);
+  expect(txt).toBeInTheDocument();
 });

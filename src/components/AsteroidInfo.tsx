@@ -13,7 +13,7 @@ const AsteroidInfo = () => {
     <h1>AsteroidInfo</h1>
     <h2>{randomAteroidData?.name}</h2>
     <h3>{randomAteroidData?.nasa_jpl_url}</h3>
-    <h3>{randomAteroidData?.is_potentially_hazardous_asteroid? "false" : "true"}</h3>
+    <h3>{randomAteroidData?.is_potentially_hazardous_asteroid? "true" : "false"}</h3>
     </>
   )
 }

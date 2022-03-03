@@ -11,6 +11,6 @@ test('render Home commponent', () => {
     <BrowserRouter>
    <Home/>
   </BrowserRouter></Provider>);
-  const input = screen.getByTestId("Asteroid ID");
-  expect(input).toBeInTheDocument();
+  const placeholder = screen.getByPlaceholderText(/Enter Asteroid ID/);
+  expect(placeholder).toBeInTheDocument();
 });

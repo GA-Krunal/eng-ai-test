@@ -11,20 +11,11 @@ const Home = () => {
             id:string
             randomAteroidData:object
     }
-    // const API_KEY = "lgq2FChNreNS5V6hTae7HeAF0cMvGTCi0uu1OIwh";
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const id = useSelector((state:stateType)=>{
         return state.id
     })
-    const randomAteroidData = useSelector((state:stateType)=>{
-        return state.randomAteroidData
-    })
-    useEffect(() => {
-        console.log(id , "random id is here");
-        console.log(randomAteroidData , "data is here")
-    }, [id,randomAteroidData])
-    
     const handleChange = (event : React.ChangeEvent<HTMLInputElement>) =>{
         dispatch(getRandomId(event.target.value)) 
     }
