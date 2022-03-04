@@ -6,8 +6,12 @@ const initialState = {
     id : "0",
     randomAteroidData:{}
 }
+type stateType = {
+    id:string
+    randomAteroidData:any
+}
 
-const AsteroidReducer = (state=initialState, action:Action) =>{
+const AsteroidReducer = (state: stateType | undefined, action: Action) =>{
     // debugger
     switch (action.type) {
         case "GET_RANDOM_ID":
