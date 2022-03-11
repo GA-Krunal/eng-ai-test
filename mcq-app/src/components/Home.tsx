@@ -31,7 +31,6 @@ const Home = () => {
     const handleLanguageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(setLanguage(e.target.value))
     };
-    console.log(language , "lalalal")
     return (
         <>
         <form  onSubmit={()=>navigate('/quiz')}>

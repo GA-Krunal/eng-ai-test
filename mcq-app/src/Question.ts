@@ -57,7 +57,7 @@ const questionList = {
       question: "5.Select True options",
       type: "Multi Select",
       options: ["1>2", "5>=3", "1=0", "9<11"],
-      Answer: "5>=3",
+      Answer: [ "5>=3","9<11"],
       Answered: false,
       correct: false,
       selectedAns: [],

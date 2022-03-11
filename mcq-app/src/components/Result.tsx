@@ -12,7 +12,7 @@ const Result = () => {
     
       }
       const result = useSelector((state: stateType) => state.result)
-      console.log(result , "result")
+    
   return (
       <>
       <h2>Test Result</h2>
@@ -23,9 +23,15 @@ const Result = () => {
   data={[
     { title: 'Correct', value: result, color: '#E38627' },
     { title: 'Incorrect', value: (5 - result), color: '#C13C37' },
-    // { title: 'Three', value: 20, color: '#6A2135' },
+   
   ]}
-  label={({ dataEntry }) => dataEntry.title}
+labelStyle={{
+fontSize: "4px",
+fill: "#000",
+}}
+  label={(props) => {
+    return props.dataEntry.value !== 0 ?`${props.dataEntry.title} ${Math.round(props.dataEntry.percentage)}%`: null;
+  }}
 />
       </div>
       </>

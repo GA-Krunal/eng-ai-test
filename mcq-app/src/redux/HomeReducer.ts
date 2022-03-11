@@ -6,16 +6,10 @@ const initialState = {
 }
 type Action={
     type:string,
-    payload:string
+    payload:any
 }
-type stateType = {
-    language : string,
-    answers:any,
-    correctAnswers :any,
-    result:number
-}
-const HomeReducer = (state:stateType  = initialState , action:Action)=>{
 
+const HomeReducer = (state =initialState, action:Action)=>{
     switch (action.type) {
         case "SET_LANGUAGE":
             return{
