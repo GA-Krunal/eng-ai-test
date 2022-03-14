@@ -32,9 +32,8 @@ const HomeReducer = (state =initialState, action:Action)=>{
                 result : action.payload
             }
         default:
-            return{
-                state
-            }
+            return state
+    
     }
 
 }
