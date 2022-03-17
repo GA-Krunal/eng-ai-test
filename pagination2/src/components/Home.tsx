@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+// import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,32 +8,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Pagination from '@mui/material/Pagination';
-import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 import axios from 'axios';
 import { useDispatch , useSelector} from 'react-redux';
-import {getTableData} from '../redux/HomeActions';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 1600,
-  height:200,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
+import {getRawJson, getTableData} from '../redux/HomeActions';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [pageNumber, setPageNumber] = useState(0)
-    const [rowData, setRowData] = useState("")
-    const [term, setTerm] = useState("")
+    const navigate = useNavigate();
     let page = 0
+    const [arr, setArr] = useState([])
     const dispatch = useDispatch();
     type stateType = {
         data:any
@@ -42,8 +28,6 @@ const Home = () => {
         return state.data
     })
     console.log(data , "data");
-    const [open, setOpen] = React.useState(false);
-    const handleClose = () => setOpen(false);
     let nbPages:any;
     const getData = async()=>{
         console.log(page);
@@ -66,19 +50,15 @@ const Home = () => {
         setPageNumber(page)
        }
        const handleClick = (item:any)=>{
-        setRowData(JSON.stringify(item))
-        setOpen(true)
-       }
-       const handleTermChange = (e:any)=>{
-         console.log(e.target.value);
-        setTerm(e.target.value)
+dispatch(getRawJson(item))
+navigate("/rawjson")
+
        }
     return (
         <>
         <h2>Data Table</h2>
-        <TextField id="filled-basic" label="Search by Title and created at" variant="filled"onChange={handleTermChange}  />
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table"> 
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
                 <TableCell>Title</TableCell>
@@ -88,7 +68,7 @@ const Home = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {data?.slice(pageNumber*20 , pageNumber*20+20).filter((elem:any)=> elem.title.includes(term) || elem.created_at.includes(term)).map((item:any) => (
+              {data?.slice(pageNumber*20 , pageNumber*20+20).map((item:any) => (
                 <TableRow
                   key={Math.random()}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -100,29 +80,16 @@ const Home = () => {
                   <TableCell align="center">{item.url}</TableCell>
                   <TableCell align="center">{item.created_at}</TableCell>
                   <TableCell align="center">{item.author}</TableCell>
+                  
+                
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        
         <Pagination count={data ? data.length/20 : 1} color= "primary" variant="outlined" shape="rounded" onChange={(e , page)=>handleChange(e,page)}/>
-        <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-           Raw Json Data
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-           {rowData}
-          </Typography>
-        </Box>
-      </Modal>
-    </div>
+
       </>
       );
 }

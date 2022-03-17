@@ -24,11 +24,7 @@ const HomeReducer = (state : stateType = initialState , action:Action)=>{
                 ...state,
                rawJson:action.payload
             }
-        default:
-            return{
-                state
-            }
-           
+        default: return state       
     }
 }
 export default HomeReducer

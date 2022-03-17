@@ -6,8 +6,12 @@ type Action = {
     type:string
     payload:any
 }
+type stateType = {
+    data:any[]
+    rawJson:any 
+}
 
-const HomeReducer = (state = initialState , action:Action)=>{
+const HomeReducer = (state : stateType = initialState , action:Action)=>{
     
     switch (action.type) {
         case "GET_DATA":
@@ -20,8 +24,10 @@ const HomeReducer = (state = initialState , action:Action)=>{
                 ...state,
                rawJson:action.payload
             }
-        default: return  state
-
+        default:
+            return{
+                state
+            }
            
     }
 }

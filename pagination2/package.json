@@ -1,5 +1,5 @@
 {
-  "name": "weatherapp",
+  "name": "pagination-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,14 +14,12 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "axios": "^0.26.0",
-    "i": "^0.3.7",
-    "install": "^0.13.0",
-    "npm": "^8.5.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
     "typescript": "^4.6.2",
     "web-vitals": "^2.1.4"
   },
